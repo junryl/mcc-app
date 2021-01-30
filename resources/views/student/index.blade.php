@@ -8,13 +8,18 @@
   <script>       
     $(document).ready(function() {     
 
+        //grid table
+        var STUDENT_LIST = null;
+
         //get student list and populate table
         var studentList = [];
         $.ajax({
             type: "GET",
             url: '/getStudentList',       
-        }).done(function(data) {            
-            $('#studentList').DataTable( {
+        }).done(function(data) {     
+            //console.log(data);       
+            STUDENT_LIST = $('#studentList').DataTable( {
+                select: true,
                 data: data,
                 columns: [
                     { data: 'name' },    
@@ -22,36 +27,33 @@
                     { data: 'midterm_grade' },
                     { data: 'final_grade' },
                     { data: 'final_rating' },
-                    { data: 'remarks' },
-                    { data: 'created_at' },                    
-                    { data: 'email_verified_at' },                                        
-                    { data: 'updated_at' },
+                    { data: 'remarks' },                    
                     { data: 'id' },
 
                 ],
-                "columnDefs": [
+                "columnDefs": [                    
                     {
                         "targets": [ 6 ],
-                        "visible": false,
-                        "searchable": false
-                    },
-                    {
-                        "targets": [ 7 ],
-                        "visible": false,
-                        "searchable": false
-                    },
-                    {
-                        "targets": [ 8 ],
-                        "visible": false,
-                        "searchable": false
-                    },
-                    {
-                        "targets": [ 9 ],
                         "visible": false,
                         "searchable": false
                     }
                 ]
             });
+
+            
+            //events
+            STUDENT_LIST.on( 'select', function ( e, dt, type, indexes ) {                
+                if ( type === 'row' ) {                    
+                    var data = STUDENT_LIST.rows( indexes ).data()[0];
+                    console.log('row selected data',data);
+                    
+                    //show modal
+                    $('#myMeditGradeModalodal').on('shown.bs.modal', function () {
+                        
+                    });
+                }
+            });
+
         });
 
     });    

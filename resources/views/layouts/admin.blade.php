@@ -22,6 +22,7 @@
 
     <!-- DataTable -->
     <link href="{{asset('css/jquery.dataTables.min.css')}}" rel="stylesheet">
+    <link href="{{asset('css/select.dataTables.min.css')}}" rel="stylesheet">
 
 </head>
 
@@ -352,6 +353,7 @@
 
     <!-- DataTable -->
     <script src="{{asset('js/jquery.dataTables.min.js')}}"></script>
+    <script src="{{asset('js/dataTables.select.min.js')}}"></script>
 
     @yield('scripts')
     

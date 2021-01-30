@@ -108,6 +108,7 @@ class StudentController extends Controller
             ->leftJoin('users', 'grades.user_id', '=', 'users.id')
             ->leftJoin('student_course', 'grades.student_course_id', '=', 'student_course.id')
             ->orderBy('name', 'asc')
+            ->select('grades.*', 'users.name','student_course.student_course_name')
             ->get();
 
         return $student_grades;
