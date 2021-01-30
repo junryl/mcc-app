@@ -13,36 +13,40 @@
         $.ajax({
             type: "GET",
             url: '/getStudentList',       
-        }).done(function(data) {
-            console.log(data);
+        }).done(function(data) {            
             $('#studentList').DataTable( {
                 data: data,
                 columns: [
                     { data: 'name' },    
-                    { data: 'email' },
+                    { data: 'student_course_name' },
+                    { data: 'midterm_grade' },
+                    { data: 'final_grade' },
+                    { data: 'final_rating' },
+                    { data: 'remarks' },
                     { data: 'created_at' },                    
                     { data: 'email_verified_at' },                                        
                     { data: 'updated_at' },
                     { data: 'id' },
+
                 ],
                 "columnDefs": [
                     {
-                        "targets": [ 2 ],
+                        "targets": [ 6 ],
                         "visible": false,
                         "searchable": false
                     },
                     {
-                        "targets": [ 3 ],
+                        "targets": [ 7 ],
                         "visible": false,
                         "searchable": false
                     },
                     {
-                        "targets": [ 4 ],
+                        "targets": [ 8 ],
                         "visible": false,
                         "searchable": false
                     },
                     {
-                        "targets": [ 5 ],
+                        "targets": [ 9 ],
                         "visible": false,
                         "searchable": false
                     }

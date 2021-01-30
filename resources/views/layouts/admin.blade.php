@@ -58,7 +58,7 @@
             <li class="nav-item">
               <a class="nav-link" href="/student">
                   <i class="fas fa-user-graduate"></i>
-                  <span>Students</span></a>
+                  <span>Student Grades</span></a>
             </li>
 
             <!-- Divider -->

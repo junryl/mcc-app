@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\User;
+use DB;
 
 class StudentController extends Controller
 {
@@ -100,8 +101,17 @@ class StudentController extends Controller
 
     //get student list
     public function getStudentList(){ 
-        $users = User::all();
-        return $users;
+        //$users = User::all();
+        //return $users;
+
+        $student_grades = DB::table('grades')
+            ->leftJoin('users', 'grades.user_id', '=', 'users.id')
+            ->leftJoin('student_course', 'grades.student_course_id', '=', 'student_course.id')
+            ->orderBy('name', 'asc')
+            ->get();
+
+        return $student_grades;
+
     }
     
 }
