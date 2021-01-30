@@ -20,6 +20,9 @@
     <!-- Custom styles for this template-->
     <link href="{{asset('css/sb-admin-2.min.css')}}" rel="stylesheet">
 
+    <!-- DataTable -->
+    <link href="{{asset('css/jquery.dataTables.min.css')}}" rel="stylesheet">
+
 </head>
 
 <body id="page-top">
@@ -284,7 +287,7 @@
 
                     <!-- Page Heading -->
                     @yield('content')
-
+                    
                 </div>
                 <!-- /.container-fluid -->
 
@@ -326,7 +329,12 @@
                 <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
                 <div class="modal-footer">
                     <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                    <a class="btn btn-primary" href="login.html">Logout</a>
+                    <a  class="btn btn-danger" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                        Logout
+                    </a>
+                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                        {{ csrf_field() }}
+                    </form>
                 </div>
             </div>
         </div>
@@ -342,6 +350,11 @@
     <!-- Custom scripts for all pages-->
     <script src="{{asset('js/sb-admin-2.min.js')}}"></script>
 
+    <!-- DataTable -->
+    <script src="{{asset('js/jquery.dataTables.min.js')}}"></script>
+
+    @yield('scripts')
+    
 </body>
 
 </html>

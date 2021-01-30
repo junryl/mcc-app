@@ -2,7 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\StudentController;
-
+use App\Http\Controllers\GradeController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -16,11 +16,19 @@ use App\Http\Controllers\StudentController;
 
 Auth::routes();
 
-Route::get('/', function () {
-    return view('admin.index');    
-});
+// Route::get('/', function () {
+//     return view('admin.index');    
+// });
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 //student routes
 Route::resource('student', StudentController::class);
+
+//student ajax routes
+Route::get('/getStudentList', [StudentController::class,'getStudentList']);
+
+//grade routes
+Route::resource('student/grade', GradeController::class);
+
+

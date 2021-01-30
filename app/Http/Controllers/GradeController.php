@@ -3,9 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\User;
 
-class StudentController extends Controller
+class GradeController extends Controller
 {
 
     /**
@@ -17,7 +16,7 @@ class StudentController extends Controller
     {
         $this->middleware('auth');
     }
-    
+
     /**
      * Display a listing of the resource.
      *
@@ -25,11 +24,8 @@ class StudentController extends Controller
      */
     public function index()
     {
-        $users = User::all();
-
-        return view('student.index',[
-            'users' => $users
-        ]);
+        return "OK";
+        //return view('student.grade.index');
     }
 
     /**
@@ -97,11 +93,4 @@ class StudentController extends Controller
     {
         //
     }
-
-    //get student list
-    public function getStudentList(){ 
-        $users = User::all();
-        return $users;
-    }
-    
 }
