@@ -6,7 +6,12 @@
 
 @section('scripts')
   <script>       
-    $(document).ready(function() {     
+    $(document).ready(function() {    
+
+        //: INITIALIZATION
+
+        //holds the currently selected row on student grade list grid
+        var student_row_selected = {};
 
         //grid table
         var STUDENT_LIST = null;
@@ -40,20 +45,19 @@
                 ]
             });
 
-            
-            //events
+            //: EVENTS
+
             STUDENT_LIST.on( 'select', function ( e, dt, type, indexes ) {                
                 if ( type === 'row' ) {                    
                     var data = STUDENT_LIST.rows( indexes ).data()[0];
-                    console.log('row selected data',data);
-                    
-                    //show modal
-                    $('#myMeditGradeModalodal').on('shown.bs.modal', function () {
-                        
-                    });
+                    student_row_selected = data;
+                    populate_student_grade_modal('editGradeForm',student_row_selected);                        
+                    $("#editGradeModal").modal();
                 }
             });
 
+
+            //: FUNCTIONS
         });
 
     });    

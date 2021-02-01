@@ -1,6 +1,5 @@
 <div class="container">
-  <button class="btn btn-sm btn-primary">Add</button>
-  <button class="btn btn-sm btn-warning ml-1">Edit</button>
+  <button class="btn btn-sm btn-primary">Add</button>  
   <div class="row mt-1"></div>
   <table id="studentList" class="display mt-1" cellspacing="0" width="100%">
     <thead>
@@ -18,18 +17,17 @@
 </div>
 
 <!-- modal -->
-<!--
-<div class="editGradeModal" tabindex="-1" role="dialog">
+<div class="modal fade" id="editGradeModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title">Edit Grade</h5>
+        <h5 class="modal-title" id="exampleModalLabel">Edit Grade</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
       <div class="modal-body">
-        <form>         
+        <form id="editGradeForm">         
           <div class="form-group row">
             <label for="midterm" class="col-sm-2 col-form-label">Midterm Grade</label>
             <div class="col-sm-10">
@@ -54,15 +52,14 @@
               <textarea type="remarks" class="form-control" id="remarks" placeholder=""></textarea>
             </div>
           </div>
-        </form>
+        </form>      
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-primary">Save changes</button>
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-success">Save</button>
       </div>
     </div>
   </div>
 </div>
--->
 
 

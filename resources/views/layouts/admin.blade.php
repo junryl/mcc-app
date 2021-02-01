@@ -23,6 +23,11 @@
     <!-- DataTable -->
     <link href="{{asset('css/jquery.dataTables.min.css')}}" rel="stylesheet">
     <link href="{{asset('css/select.dataTables.min.css')}}" rel="stylesheet">
+    
+     <!-- JSGrid    
+    <link href="{{asset('css/jsgrid.min.css')}}" rel="stylesheet">
+    <link href="{{asset('css/jsgrid-theme.min.css')}}" rel="stylesheet">
+    --> 
 
 </head>
 
@@ -354,6 +359,13 @@
     <!-- DataTable -->
     <script src="{{asset('js/jquery.dataTables.min.js')}}"></script>
     <script src="{{asset('js/dataTables.select.min.js')}}"></script>
+    
+    <!-- JSGrid 
+    <script src="{{asset('js/jsgrid.min.js')}}"></script>    
+    -->
+
+    <!-- Custom JS Scripts -->
+    <script src="{{asset('js/my-scripts.js')}}"></script>    
 
     @yield('scripts')
     
