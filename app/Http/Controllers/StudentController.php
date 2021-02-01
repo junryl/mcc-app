@@ -19,6 +19,9 @@ class StudentController extends Controller
         $this->middleware('auth');
     }
     
+
+    /*******************************************Template functions *********************************/
+
     /**
      * Display a listing of the resource.
      *
@@ -97,22 +100,6 @@ class StudentController extends Controller
     public function destroy($id)
     {
         //
-    }
-
-    //get student list
-    public function getStudentList(){ 
-        //$users = User::all();
-        //return $users;
-
-        $student_grades = DB::table('grades')
-            ->leftJoin('users', 'grades.user_id', '=', 'users.id')
-            ->leftJoin('student_course', 'grades.student_course_id', '=', 'student_course.id')
-            ->orderBy('name', 'asc')
-            ->select('grades.*', 'users.name','student_course.student_course_name')
-            ->get();
-
-        return $student_grades;
-
-    }
+    }   
     
 }

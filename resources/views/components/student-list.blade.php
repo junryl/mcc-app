@@ -1,5 +1,4 @@
-<div class="container">
-  <button class="btn btn-sm btn-primary">Add</button>  
+<div class="container">    
   <div class="row mt-1"></div>
   <table id="studentList" class="display mt-1" cellspacing="0" width="100%">
     <thead>
@@ -56,7 +55,7 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-success">Save</button>
+        <button type="button" class="btn btn-success" id="editGradeModalSave">Save</button>
       </div>
     </div>
   </div>

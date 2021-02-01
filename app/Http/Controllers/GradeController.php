@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\User;
+use DB;
 
 class GradeController extends Controller
 {
@@ -16,6 +18,34 @@ class GradeController extends Controller
     {
         $this->middleware('auth');
     }
+
+    //get student list
+    public function getStudentGradeList(){ 
+        $student_grades = DB::table('grades')
+            ->leftJoin('users', 'grades.user_id', '=', 'users.id')
+            ->leftJoin('student_course', 'grades.student_course_id', '=', 'student_course.id')
+            ->orderBy('name', 'asc')
+            ->select('grades.*', 'users.name','student_course.student_course_name')
+            ->get();
+
+        return $student_grades;
+    }
+
+    //update grade by id
+    public function updateStudentGrade(Request $request){         
+        $update = DB::table('grades')
+        ->where('id', $request->id)
+        ->update([
+            'midterm_grade' => $request->midterm_grade,
+            'final_grade' => $request->final_grade,
+            'final_rating' => $request->final_rating,
+            'remarks' => $request->remarks,
+        ]);    
+        return $update;      
+    } 
+
+
+    /*******************************************Template functions *********************************/
 
     /**
      * Display a listing of the resource.

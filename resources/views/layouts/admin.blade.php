@@ -29,6 +29,8 @@
     <link href="{{asset('css/jsgrid-theme.min.css')}}" rel="stylesheet">
     --> 
 
+    <meta name="csrf-token" content="{{ csrf_token() }}" />
+
 </head>
 
 <body id="page-top">

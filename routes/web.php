@@ -26,7 +26,8 @@ Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('ho
 Route::resource('student', StudentController::class);
 
 //student ajax routes
-Route::get('/getStudentList', [StudentController::class,'getStudentList']);
+Route::get('/getStudentGradeList', [GradeController::class,'getStudentGradeList']);
+Route::post('/updateStudentGrade', [GradeController::class,'updateStudentGrade']);
 
 //grade routes
 Route::resource('student/grade', GradeController::class);
