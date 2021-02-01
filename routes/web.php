@@ -3,6 +3,8 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\StudentController;
 use App\Http\Controllers\GradeController;
+use App\Http\Controllers\EnrollmentController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -32,4 +34,6 @@ Route::post('/updateStudentGrade', [GradeController::class,'updateStudentGrade']
 //grade routes
 Route::resource('student/grade', GradeController::class);
 
+//enrollment routes
+Route::resource('/enrollment', EnrollmentController::class);
 

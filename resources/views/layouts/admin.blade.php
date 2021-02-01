@@ -64,6 +64,16 @@
 
             <!-- Nav Item - Pages Collapse Menu -->
             <li class="nav-item">
+            <a class="nav-link" href="/enrollment">
+                <i class="fas fa-user-graduate"></i>
+                <span>Enrollment</span></a>
+            </li>            
+
+            <!-- Divider -->
+            <hr class="sidebar-divider">
+
+            <!-- Nav Item - Pages Collapse Menu -->
+            <li class="nav-item">
               <a class="nav-link" href="/student">
                   <i class="fas fa-user-graduate"></i>
                   <span>Student Grades</span></a>
