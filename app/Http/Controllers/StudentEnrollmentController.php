@@ -4,26 +4,10 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\User;
-use App\Models\Course;
-use App\Models\SchoolYear;
 use DB;
 
-class StudentController extends Controller
+class StudentEnrollmentController extends Controller
 {
-
-    /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
-    
-
-    /*******************************************Template functions *********************************/
-
     /**
      * Display a listing of the resource.
      *
@@ -31,15 +15,9 @@ class StudentController extends Controller
      */
     public function index()
     {
-        $users = User::all();
-        $courses = Course::pluck('code', 'id');
-        $school_year = SchoolYear::pluck('sy_code', 'id');
-        $courses->prepend('Select One');
-        $school_year->prepend('Select One');
-
-        return view('student.index',[
-            'courses' => $courses,
-            'school_year' => $school_year    
+        $students = User::all();         
+        return view('enrollment.add.index',[
+            'students' => $students
         ]);
 
     }
@@ -108,6 +86,5 @@ class StudentController extends Controller
     public function destroy($id)
     {
         //
-    }   
-    
+    }
 }

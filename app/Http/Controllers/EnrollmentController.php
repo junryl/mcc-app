@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Course;
+use App\Models\SchoolYear;
+use App\Models\User;
+use App\Models\Grades;
 use DB;
 
 
@@ -27,12 +30,37 @@ class EnrollmentController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {        
+    {    
         $courses = Course::pluck('code', 'id');
+        $school_year = SchoolYear::pluck('sy_code', 'id');
+        $courses->prepend('Select One');
+        $school_year->prepend('Select One');
+        
         return view('enrollment.index',[
-            'courses' => $courses
+            'courses' => $courses,
+            'school_year' => $school_year            
         ]);
+
     }
+
+    //get student list
+    public function getStudentList(){ 
+        $students = User::all(); 
+        return $students;        
+    } 
+    
+    //get student list enrolled by course and school year
+    public function studentEnrolledByCourseAndSchoolYear($courseId = null, $schoolYearId=null){         
+        $enrolled_students = DB::table('grades')
+            ->leftJoin('users', 'grades.user_id', '=', 'users.id')
+            ->leftJoin('student_course', 'grades.student_course_id', '=', 'student_course.id')
+            ->orderBy('name', 'asc')
+            ->select('grades.id', 'users.name')
+            ->where('course_id', $courseId)
+            ->where('school_year_id', $schoolYearId)
+            ->get();
+        return $enrolled_students;
+    }     
 
     /**
      * Show the form for creating a new resource.

@@ -1,6 +1,16 @@
 <div class="container">    
+  <div class="row">
+    <div class="col-sm-3">
+      {!! Form::label('Course', 'Course', []) !!}
+      {!! Form::select('course', $courses,'',['id' => 'course']) !!}
+    </div>
+    <div class="col-sm-3" id="school_year_container">      
+      {!! Form::label('schoolYear', 'School Year', []) !!}
+      {!! Form::select('school_year', $schoolyear,'',['id' => 'school_year']) !!}   
+    </div>
+  </div>
   <div class="row mt-1"></div>
-  <table id="studentList" class="display mt-1" cellspacing="0" width="100%">
+  <table id="studentList" class="display compact mt-1" cellspacing="0" width="100%">
     <thead>
         <tr>          
             <th>Name</th>

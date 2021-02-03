@@ -1,7 +1,7 @@
 @extends('layouts.admin')
 
 @section('content')
-    <x-student-list :users="$users"></x-student-list>
+    <x-student-list :courses="$courses" :schoolyear="$school_year"></x-student-list>
 @endsection
 
 @section('scripts')

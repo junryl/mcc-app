@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\StudentController;
 use App\Http\Controllers\GradeController;
 use App\Http\Controllers\EnrollmentController;
+use App\Http\Controllers\StudentEnrollmentController;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,7 +21,7 @@ Auth::routes();
 
 // Route::get('/', function () {
 //     return view('admin.index');    
-// });
+// });//enrollment routes
 
 Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
@@ -36,4 +37,12 @@ Route::resource('student/grade', GradeController::class);
 
 //enrollment routes
 Route::resource('/enrollment', EnrollmentController::class);
+
+//enrollment routes : ajax
+Route::get('/getStudentList', [EnrollmentController::class,'getStudentList']);
+Route::get('/studentEnrolledByCourseAndSchoolYear/{courseId}/{shoolYearId}', [EnrollmentController::class,'studentEnrolledByCourseAndSchoolYear'],function ($courseId, $shoolYearId) {});
+
+//enrollment add routes
+Route::resource('/enrollment/student/add', StudentEnrollmentController::class);
+
 

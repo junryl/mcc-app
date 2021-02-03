@@ -31,6 +31,7 @@ class GradeFactory extends Factory
             'remarks' => $this->faker->numberBetween(1,100),
             'student_course_id' => $this->faker->numberBetween(1,3),
             'user_id' => $this->faker->numberBetween(1,31),
+            'school_year_id' => '1',
         ];
     }
 }

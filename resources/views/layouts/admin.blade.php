@@ -370,7 +370,7 @@
 
     <!-- DataTable -->
     <script src="{{asset('js/jquery.dataTables.min.js')}}"></script>
-    <script src="{{asset('js/dataTables.select.min.js')}}"></script>
+    <script src="{{asset('js/dataTables.select.min.js')}}"></script>    
     
     <!-- JSGrid 
     <script src="{{asset('js/jsgrid.min.js')}}"></script>    
