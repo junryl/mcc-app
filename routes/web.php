@@ -45,4 +45,6 @@ Route::get('/studentEnrolledByCourseAndSchoolYear/{courseId}/{shoolYearId}', [En
 //enrollment add routes
 Route::resource('/enrollment/student/add', StudentEnrollmentController::class);
 
+//enrollment add routes : ajax
+Route::post('/studentEnroll', [StudentEnrollmentController::class,'enrollStudents']);
 

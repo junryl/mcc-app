@@ -9,7 +9,7 @@
     <div class="col-sm-3">      
     </div> 
     <div class="col-sm-3">
-      <button class="btn btn-success btn-sm">Enroll Selected Students</button>
+      <button class="btn btn-success btn-sm" id="btnEnrollSelectedStudents">Enroll Selected Students</button>
     </div> 
   </div>
   <div class="row mt-1"></div>

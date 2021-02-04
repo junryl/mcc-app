@@ -8,38 +8,69 @@
   <script>       
     $(document).ready(function() {    
       //: INITIALIZE
+
+      //add csrf token
+      $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+      });
+
       $.ajax({
             type: "GET",
             url: '/getStudentList',       
-      }).done(function(data) {      
-        console.log('getStudentList',data);
-        STUDENT_LIST = $('#enrollmentStudentList').DataTable( {
+      }).done(function(data) {              
+        $('#enrollmentStudentList').DataTable( {
             select: true,
             data: data,
             columns: [
                 { data: 'name' },                     
                 { data: 'id' },
             ],
-            "columnDefs": [     
+            "columnDefs": [                                   
+                {
+                    "targets": [ 1 ],
+                    "visible": false,
+                    "searchable": false
+                },
                 {
                     orderable: false,
                     className: 'select-checkbox',
                     targets:   0
                 },
-                {
-                    "targets": [ 1 ],
-                    "visible": false,
-                    "searchable": false
-                }
             ],
             select: {
-                style: 'multiple'
-            }
+                style: 'multi'
+            }            
         });   
       });   
       //: EVENTS
 
+      $('#btnEnrollSelectedStudents').click(enrollStudents);
+      
+
       //: FUNCTIONS
+      function enrollStudents(){                
+        var count = $('#enrollmentStudentList').DataTable().rows( { selected: true } ).count();
+        var data = $('#enrollmentStudentList').DataTable().rows( { selected: true } ).data();
+        var IdsToEnroll = [];
+        
+        for(var i = 0; i < count; i++){
+          IdsToEnroll.push(data[i].id)          
+        }
+
+        $.ajax({
+          type: "POST",
+          url: '/studentEnroll',       
+          data: { 'course_id': 1, 'school_year_id': 1, ids: IdsToEnroll},
+          success: function (data) { 
+            console.log(data); 
+          },
+          error: function (error) { 
+            console.log('Error:', error.statusText); 
+          }
+        });        
+      }
 
     });    
 

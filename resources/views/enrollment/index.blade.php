@@ -39,8 +39,11 @@
         var course = $('#course').val();
         var school_year = $('#school_year').val();
         if(course > 0 && school_year > 0){
-          $('#btn_enroll_container').show();
+          $('#btn_enroll_container').show();          
           populateEnrolledList(course,school_year);
+        }else{
+          $('#btn_enroll_container').hide();        
+          $('#enrolledStudentList').dataTable().fnClearTable();
         }
       }
 

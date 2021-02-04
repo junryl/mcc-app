@@ -22,6 +22,25 @@ class EnrollmentController extends Controller
         $this->middleware('auth');
     }
 
+    //get student list
+    public function getStudentList(){ 
+        $students = User::all(); 
+        return $students;        
+    } 
+    
+    //get student list enrolled by course and school year
+    public function studentEnrolledByCourseAndSchoolYear($courseId = null, $schoolYearId=null){         
+        $enrolled_students = DB::table('grades')
+            ->leftJoin('users', 'grades.user_id', '=', 'users.id')
+            ->leftJoin('student_course', 'grades.student_course_id', '=', 'student_course.id')
+            ->orderBy('name', 'asc')
+            ->select('grades.id', 'users.name')
+            ->where('course_id', $courseId)
+            ->where('school_year_id', $schoolYearId)
+            ->get();
+        return $enrolled_students;
+    } 
+
     /*******************************************Template functions *********************************/
 
     /**
@@ -41,26 +60,7 @@ class EnrollmentController extends Controller
             'school_year' => $school_year            
         ]);
 
-    }
-
-    //get student list
-    public function getStudentList(){ 
-        $students = User::all(); 
-        return $students;        
-    } 
-    
-    //get student list enrolled by course and school year
-    public function studentEnrolledByCourseAndSchoolYear($courseId = null, $schoolYearId=null){         
-        $enrolled_students = DB::table('grades')
-            ->leftJoin('users', 'grades.user_id', '=', 'users.id')
-            ->leftJoin('student_course', 'grades.student_course_id', '=', 'student_course.id')
-            ->orderBy('name', 'asc')
-            ->select('grades.id', 'users.name')
-            ->where('course_id', $courseId)
-            ->where('school_year_id', $schoolYearId)
-            ->get();
-        return $enrolled_students;
-    }     
+    }    
 
     /**
      * Show the form for creating a new resource.
