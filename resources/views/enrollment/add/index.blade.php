@@ -64,7 +64,11 @@
           url: '/studentEnroll',       
           data: { 'course_id': 1, 'school_year_id': 1, ids: IdsToEnroll},
           success: function (data) { 
-            console.log(data); 
+            if(parseInt(data) > 0){              
+              window.location.href = window.location.origin + '/enrollment';
+            }else{
+              alert('Error: Enrollment failed.');
+            }
           },
           error: function (error) { 
             console.log('Error:', error.statusText); 
