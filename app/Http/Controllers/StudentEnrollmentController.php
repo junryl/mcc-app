@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\Grade;
+use App\Models\Course;
+use App\Models\SchoolYear;
 use DB;
 
 class StudentEnrollmentController extends Controller
@@ -34,11 +36,22 @@ class StudentEnrollmentController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
-    {
-        $students = User::all();         
+    public function index(Request $request)
+    {   
+        $course_id = $_GET['course_id'];
+        $school_year_id = $_GET['school_year_id'];
+        $students = User::all();    
+        $course = DB::table('course')->where('id', $course_id)->pluck('code')->first();  
+        $school_year = DB::table('school_year')->where('id', $school_year_id)->pluck('sy_code')->first();
+        
         return view('enrollment.add.index',[
-            'students' => $students
+            'students' => $students,
+            'params' => [
+                'course' => $course,
+                'course_id' => $course_id,
+                'school_year' => $school_year,
+                'school_year_id' => $school_year_id,                
+            ],            
         ]);
 
     }

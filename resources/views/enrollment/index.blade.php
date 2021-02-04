@@ -31,7 +31,8 @@
       //: EVENTS
       $('#btn_enroll_container').hide();
       $('#course').change(checkIfCourseAndSYAreSelected);
-      $('#school_year').change(checkIfCourseAndSYAreSelected);      
+      $('#school_year').change(checkIfCourseAndSYAreSelected);
+      $('#btn_enroll').click(navigateToStudentEnrollment);      
 
       //: FUNCTIONS
 
@@ -57,6 +58,12 @@
             $('#enrolledStudentList').dataTable().fnAddData(data);
           }          
         });
+      }
+
+      function navigateToStudentEnrollment(){
+        var course = $('#course').val();
+        var school_year = $('#school_year').val();
+        window.location.href = '/enrollment/student/add?course_id='+course+'&school_year_id='+school_year;
       }
 
 

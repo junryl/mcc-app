@@ -1,7 +1,7 @@
 @extends('layouts.admin')
 
 @section('content')
-  <x-enrollment-add :students="$students"></x-enrollment-add>
+  <x-enrollment-add :students="$students" :params="$params"></x-enrollment-add>
 @endsection
 
 @section('scripts')
@@ -62,7 +62,7 @@
         $.ajax({
           type: "POST",
           url: '/studentEnroll',       
-          data: { 'course_id': 1, 'school_year_id': 1, ids: IdsToEnroll},
+          data: { 'course_id': $('#enroll-course-id').val(), 'school_year_id': $('#enroll-school-year-id').val(), ids: IdsToEnroll},
           success: function (data) { 
             if(parseInt(data) > 0){              
               window.location.href = window.location.origin + '/enrollment';

@@ -9,7 +9,7 @@
       {!! Form::select('school_year', $schoolyear,'',['id' => 'school_year']) !!}   
     </div>
     <div class="col-sm-3" id="btn_enroll_container">      
-       <a href="/enrollment/student/add" class="btn btn-success btn-sm" id="btn_enroll">Add Student to Enroll</a>
+       <a class="btn btn-success btn-sm" id="btn_enroll">Add Student to Enroll</a>
     </div>
   </div>
   <div class="row mt-1"></div>

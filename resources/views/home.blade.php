@@ -1,25 +1,8 @@
 @extends('layouts.admin')
 
-@section('content')
-Home Page
-<!--
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">{{ __('Dashboard') }}</div>
-
-                <div class="card-body">
-                    @if (session('status'))
-                        <div class="alert alert-success" role="alert">
-                            {{ session('status') }}
-                        </div>
-                    @endif
-
-                    {{ __('You are logged in!') }}
-                </div>
-            </div>
-        </div>
-    </div>
-</div>-->
+@section('content')    
+    <blockquote class="blockquote text-center ml-5 mr-5 mt-5">
+        <h3>When you educate one person you can change a life, when you educate many you can change the world</h3>
+        <footer class="blockquote-footer">Shai Reshef</footer>
+    </blockquote>
 @endsection
